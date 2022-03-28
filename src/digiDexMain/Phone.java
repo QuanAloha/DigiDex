@@ -12,16 +12,13 @@ public class Phone {
     // CONSTRUCTOR
     public Phone (String employeeFirstName, String employeeLastName, int phoneAssetCode, int routeNumber) {
 
+        // Store Given Variables into Object.
         this.employeeFirstName = employeeFirstName;
-
         this.employeeLastName = employeeLastName;
-
         this.routeNumber = routeNumber;
-
         this.phoneAssetCode = phoneAssetCode;
 
         // Set a phone number for the object based on what phone asset code is provided. 
-
         if (phoneAssetCode == 123) {
             this.phoneNumber = 1234567890L;
         } else if (phoneAssetCode == 321) {
