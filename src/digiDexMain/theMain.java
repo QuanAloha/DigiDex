@@ -66,17 +66,17 @@ public class theMain {
 
         // Reconstruct the contacts and print the vcf file for the phones.
             // Set up FileWriter
-            FileWriter writer = new FileWriter("newDigiDex.vcf");
+            FileWriter writer = new FileWriter("/Users/nathanielatwood/Downloads/newDigiDex.vcf");
 
             // Reconstruct and write contacts to a contact file.
             for (int i = 0; i < phoneArray.length; i++) {           
-                writer.write( "BEGIN: VCARD \n" +
+                writer.write( "BEGIN:VCARD \n" +
                             "VERSION:3.0  \n" +
                             "N:" + phoneArray[i].getEmployeeLastName() + ";" + phoneArray[i].getEmployeeFirstName() + ";;;  \n" +
                             "FN:" + phoneArray[i].getEmployeeName() + "\n" +
                             "ORG:" + phoneArray[i].getRouteNumber() + "\n" +
-                            "TEL; TYPE=WORK,MSG: +1" + phoneArray[i].getPhoneNumber() + "\n" +
-                            "END: VCARD \n");
+                            "TEL;TYPE=WORK,MSG: +1" + phoneArray[i].getPhoneNumber() + "\n" +
+                            "END:VCARD \n");
             }
 
             // Close FileWriter
