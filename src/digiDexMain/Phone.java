@@ -37,6 +37,20 @@ public class Phone {
         
     }
 
+
+    // ACCESSOR METHODS
+
+    public String getEmployeeName() { return employeeName; }
+
+    public int getRouteNumber() { return routeNumber; }
+
+    public int getPhoneAssetCode() { return phoneAssetCode; }
+
+    public long getPhoneNumber() { return phoneNumber; }
+
+
+
+
     public String toString() {
 
         return employeeName + " on route " + routeNumber + " has phone " + phoneAssetCode + " with the " + phoneNumber + " phone number.";

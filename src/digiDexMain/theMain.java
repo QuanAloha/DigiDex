@@ -11,37 +11,85 @@
 
 package digiDexMain;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Arrays;
 
 public class theMain {
 
-public static void main(String[] args) {
+public static void main(String[] args) throws IOException {
     // Read the csvFile and store it into objects. 
         
         // Ask the user what file the program will be reading 
-        System.out.println("What file will I be converting today? ");
+        // System.out.println("What file will I be converting today? ");
 
-        Scanner userInput = new Scanner(System.in);
+        // Scanner userInput = new Scanner(System.in);
 
-        String fileToScan = userInput.next();
+        // String fileToScan = userInput.next();
 
-        System.out.println("I will scan the data from " + fileToScan);
+        // System.out.println("I will scan the data from " + fileToScan);
 
-        // Scanner fileReader = new Scanner(new File(fileToScan));
+        BufferedReader fileReader = new BufferedReader(new FileReader("src/digiDexMain/Sheet2.csv"));
 
+        String firstLine = fileReader.readLine();
 
+        String[] splitFirstLine = firstLine.split(",");
 
-        // ask the user how many contacts they will be creating 
+        System.out.println(Arrays.toString(splitFirstLine));
+
+        int loopTime = Integer.parseInt(splitFirstLine[0]);
         
-        // Create an array with that many phones, then loop through the array to store data into each object. 
+        System.out.println("The program will scan " + loopTime + " lines.");
+
+        
+
+        // Create an array with that many phones, then loop through the array to store data into each object.
+        
+        Phone phoneArray[] = new Phone[loopTime];
+
+        for (int index = 0; index < phoneArray.length; index++) {
+
+            String contactLine = fileReader.readLine();
+
+            String[] contactArray = contactLine.split(",");
+
+            String employeeName = contactArray[0];
+
+            int phoneAssetCode = Integer.parseInt(contactArray[1]);
+
+            int routeNumber = Integer.parseInt(contactArray[2]);
+
+            phoneArray[index] = new Phone(employeeName, phoneAssetCode, routeNumber);
+
+        }
+
+        System.out.println(Arrays.toString(phoneArray));  // TESTING LINE TO MAKE SURE THE FILE READ CORRECTLY
+
+        fileReader.close();
 
     // Print the vcf file for the phones.
 
-        // Loop through the same array to pring out the 
+        // Loop through the same array to print out the object values
 
-    Phone aPhone = new Phone("Nathaniel Atwood", 123, 555);
+        FileWriter writer = new FileWriter("newDigiDex");
 
-    System.out.println(aPhone.toString());
+        
+        for (int i = 0; i < phoneArray.length; i++) {
+            
+            writer.write("{ \n" +
+                        phoneArray[i].getEmployeeName() + "\n" +
+                        phoneArray[i].getRouteNumber() + "\n" +
+                        phoneArray[i].getPhoneAssetCode() + "\n" +
+                        phoneArray[i].getPhoneNumber() + "\n" +
+                        "} \n");
+        }
+
+        writer.close();
+
+
+    // userInput.close();
  }
 
 }
