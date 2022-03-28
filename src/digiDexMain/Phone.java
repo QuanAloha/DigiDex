@@ -2,7 +2,9 @@ package digiDexMain;
 
 public class Phone {
     
-    private String employeeName;
+    private String employeeFirstName;
+
+    private String employeeLastName;
     
     private long phoneNumber;
 
@@ -10,9 +12,11 @@ public class Phone {
 
     private int routeNumber;
 
-    public Phone (String employeeName, int phoneAssetCode, int routeNumber) {
+    public Phone (String employeeFirstName, String employeeLastName, int phoneAssetCode, int routeNumber) {
 
-        this.employeeName = employeeName;
+        this.employeeFirstName = employeeFirstName;
+
+        this.employeeLastName = employeeLastName;
 
         this.routeNumber = routeNumber;
 
@@ -40,7 +44,11 @@ public class Phone {
 
     // ACCESSOR METHODS
 
-    public String getEmployeeName() { return employeeName; }
+    public String getEmployeeName() { return employeeFirstName + " " + employeeLastName; }
+
+    public String getEmployeeFirstName() { return employeeFirstName; }
+
+    public String getEmployeeLastName() { return employeeLastName; }
 
     public int getRouteNumber() { return routeNumber; }
 
@@ -53,7 +61,7 @@ public class Phone {
 
     public String toString() {
 
-        return employeeName + " on route " + routeNumber + " has phone " + phoneAssetCode + " with the " + phoneNumber + " phone number.";
+        return employeeFirstName + " " + employeeLastName + " on route " + routeNumber + " has phone " + phoneAssetCode + " with the " + phoneNumber + " phone number.";
 
     }
 
