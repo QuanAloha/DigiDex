@@ -1,4 +1,4 @@
-package digiDexMain;
+package app;
 
 public class Phone {
     
